@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h2><%= title %></h2>
+    <form action="/personupdate" method="post">
+        <input type="hidden" value="<%= person.id_person%>" name="id_person">
+            <div class="form-group">
+            <label for="jmeno">Jméno:</label>
+            <input type="text" class="form-control" id="jmeno" value="<%= person.first_name%>"  name="first_name" required>
+            </div>
+            <div class="form-group">
+            <label for="prijmeni">Příjmení:</label>
+            <input type="text" class="form-control" id="prijmeni" value="<%= person.last_name%>"  name="last_name" required>
+            </div>
+            <div class="form-group">
+            <label for="nickname">Přezdívka:</label>
+            <input type="text" class="form-control" id="nickname" value="<%= person.nickname%>"  name="nickname" required>
+            </div>
+            <div class="form-group">
+            <label for="datum">Datum narození:</label>
+            <input type="date" class="form-control" id="datum" value="<%= person.birth_day%>"placeholder="Zadejte datum narození" name="birth_day" >
+            </div>
+            <div class="form-group">
+            <label for="pohlavi">Pohlaví:</label>
+            <input type="text" class="form-control" id="pohlavi" value="<%= person.gender%>" placeholder="Zadejte pohlaví" name="gender" >
+            </div>
+            <div class="form-group">
+            <label for="vyska">Výška:</label>
+            <input type="text" class="form-control" id="vyska" value="<%= person.height%>" placeholder="Zadejte výšku" name="height">
+            </div>
+            <div class="form-group">
+            <label for="contact">Kontakt:</label>
+            <input type="text" class="form-control" placeholder="Zadejte kontakt" name="contact">
+                <div>
+            <input type="radio"  value="1" name="con">Facebook
+            </div>
+                <div>
+            <input type="radio"  value="2" name="con">Skype
+                </div>
+            <input type="radio"  value="3" name="con">Tel
+                <div>
+            <input type="radio"  value="4" name="con">Email
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Přidej osobu ve vztahu:</label>
+                <select name="osoby">
+                    <%sql2.forEach(function (sql2){%>
+                        <option value="<%= sql2.id_person%>"> <%= sql2.first_name + ' ' +  sql2.last_name %> </option>
+                    <% }); %>
+                </select>
+            <label for="relation">Vztahy:</label>
+            <div>
+                <input type="radio"  value="1" name="rel">Friend
+            </div>
+            <div>
+                <input type="radio"  value="2" name="rel">Enemy
+            </div>
+            <input type="radio"  value="3" name="rel">Partner
+            <div>
+                <input type="radio"  value="4" name="rel">Colleague
+            </div>
+            <input type="radio"  value="5" name="rel">Acquaintance
+            <div>
+                <input type="radio"  value="6" name="rel">Lover
+            </div>
+                <div>
+                    <input type="radio"  value="7" name="rel">Family
+                </div>
+                <div>
+                    <input type="radio"  value="8" name="rel">Spouse
+                </div>
+             </div>
+
+                <a href="/persons" class="btn btn-primary">&laquo; Zpět</a>
+                <button type="submit" class="btn btn-success">Ulož</button>
+            </form>
+        </div>
+<script>
+</script>
+</body>
+</html>

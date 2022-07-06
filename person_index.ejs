@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<style>
+    div.topnav{
+        position: absolute;
+        left: 21%;
+        font-size: 17px;
+    }
+
+</style>
+<div class="container">
+    <h2><%= title %></h2>
+    <div class="topnav" >
+        <p class="bo">
+        <a href="home">HOME</a>
+        <a href="persons">OSOBY</a>
+        <a href="meetings">SCHŮZKY</a>
+    </div>
+    <br/><br/>
+    <table class="table table-dark table-striped">
+        <thead>
+        <tr>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Přezdívka</th>
+            <th>Datum narození</th>
+            <th><a href="/addperson" class="btn btn-sm btn-primary">Přidat osobu</a></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% person.forEach(function(person){ %>
+            <tr>
+                <td><%= person.first_name %></td>
+                <td><%= person.last_name %></td>
+                <td><%= person.nickname  %></td>
+                <td><%= person.birth_day %></td>
+                <td>
+                    <a href="personedit/<%= person.id_person %>" class="btn btn-sm btn-success">Edit</a>
+                    <a href="persondelete/<%= person.id_person %>" class="btn btn-sm btn-danger">Delete</a>
+                    <a href="persondetail/<%= person.id_person %>" class="btn btn-sm btn-warning">Detail</a>
+                </td>
+            </tr>
+        <% }); %>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+            <legend>Osoba č: <%= persons.id_person %></legend>
+            <table class="table table-dark table-striped" style="width:50%">
+                <tbody>
+                <tr>
+                    <th>Jméno: </th>
+                    <td><%= persons.first_name %></td>
+                </tr>
+                <tr>
+                    <th>Příjmení: </th>
+                    <td><%= persons.last_name %></td>
+                </tr>
+                <tr>
+                    <th>Přezdívka: </th>
+                    <td><%= persons.nickname %></td>
+                </tr>
+                <tr>
+                    <th>Datum narození: </th>
+                    <td><%= persons.birth_day %></td>
+                </tr>
+                <tr>
+                    <th>Pohlaví: </th>
+                    <td><%= persons.gender %></td>
+                </tr>
+                <tr>
+                    <th>Výška: </th>
+                    <td><%= persons.height + ' cm'%></td>
+                </tr>
+                <tr>
+            </table>
+            <table class="table table-dark table-striped" style= "width:30%">
+                <th>Kontakt: </th>
+                <%contacts.forEach(function (contacts){%>
+                    <td><%= contacts.name  + ': ' +  contacts.contact %></td>
+                <% }); %>
+            </table>
+            <table class="table table-dark table-striped" style= "width:30%">
+                    <th>Vztahy: </th>
+                    <%relations.forEach(function (relations){%>
+                        <td><%= relations.name  + ' s ' +  relations.first_name + ' ' + relations.last_name %></td>
+                    <% }); %>
+                </table>
+                </tr>
+                </tbody>
+            </table>
+    <a href="/persons" class="btn btn-primary">&laquo; Zpět</a>
+    <a href="/personedit/<%=persons.id_person%>" class="btn btn-success">Uprav osobu</a>
+</div>
+</body>
+</html>
+

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <legend>Schůzka č: <%= sql.id_meeting %></legend>
+    <table class="table table-dark table-striped" style= "width:55%">
+        <tbody>
+        <tr>
+            <th>Datum konání: </th>
+            <td><%= sql.start %></td>
+        </tr>
+        <tr>
+            <th>Místo konání: </th>
+            <td><%= sql.name+' ' +sql.street_name +' '+ sql.street_number+' ' + sql.city+' ' +sql.zip+' ' +sql.country %></td>
+        </tr>
+        <tr>
+            <th>Note: </th>
+            <td><%= sql.description %></td>
+        </tr>
+        <tr>
+            <th>Délka akce: </th>
+            <td><%= sql.duration %></td>
+        </tr>
+
+    </table>
+    <table class="table table-dark table-striped" style= "width:30%">
+    <th>Účastníci: </th>
+    <%sql2.forEach(function (sql2){%>
+            <td><%= sql2.first_name + ' ' +  sql2.last_name %></td>
+    <% }); %>
+    </table>
+    <a href="/meetings" class="btn btn-primary">&laquo; Zpět</a>
+    <a href="/meetingedit/<%=sql.id_meeting%>" class="btn btn-success"> Uprav schůzku</a>
+</div>
+</body>
+</html>

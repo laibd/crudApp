@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title><%= title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div class="container">
+    <h2><%= title %></h2>
+    <form action="/savemeeting" method="post">
+        <div class="form-group">
+            <label for="start">Start:</label>
+            <input type="date" class="form-control" id="start" placeholder="Zadejte čas zahájení" name="start" required>
+        </div>
+        <div class="form-group">
+            <label for="description">Místo:</label>
+            <select name="misto" required>
+                <%sql2.forEach(function (sql2){%>
+                    <option value="<%= sql2.id_location%>"> <%= sql2.street_name + ' ' +  sql2.street_number+ ' ' +sql2.city %> </option>
+                <% }); %>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Note:</label>
+            <input type="text" class="form-control" id="description" placeholder="Zadejte poznamku" name="description" >
+        </div>
+        <a href="/meetings" class="btn btn-primary">&laquo; Zpět</a>
+        <button type="submit" class="btn btn-success">Odeslat</button>
+    </form>
+</div>
+
+</body>
+</html>
